@@ -7,8 +7,8 @@ et des indentations,
 les commentaires peuvent être placés à la fin
 d'une ligne, comme ici :
 ```brainfuck
-++++++++++ Ceci est un commentaire
-[
+++++++++++
+[ Début de la boucle
     >+++++++>++++++++++>+++>+<<<<-
 ] Fin de la boucle
 >++.>+.+++++++..+++.>++.<<++++++++
