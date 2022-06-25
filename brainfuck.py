@@ -5,7 +5,11 @@ def file_to_str(file):
     f = open(file, 'r')
     temp = ""
     for i in f.readlines():
-        temp += i
+        for j in i:
+            if j in "[]<>+-.,":
+                temp += j
+            else:
+                pass
     return temp
 
 parser = argparse.ArgumentParser(description='interprêteur brainfuck')
@@ -40,6 +44,14 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
                 vals[ptr] -= 1
         elif script[i] == ".":
             chaine += chr(vals[ptr])
+        elif script[i] == ",":
+            while True:
+                try:
+                    r = int(input("Valeur à ajouter : "))
+                    vals[ptr] = r
+                    break
+                except:
+                    print("Erreur, vous n'avez pas renseigné de nombre.")
         elif script[i] == "[":
             w = script[i+1:]
             try:
@@ -52,4 +64,5 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
                 (chaine, ptr, vals) = interpreter(w)
     return (chaine, ptr, vals)
 
+print(script)
 print(interpreter(script)[0])
