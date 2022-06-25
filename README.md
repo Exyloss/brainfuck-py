@@ -9,13 +9,14 @@ Interpréteur du langage brainfuck écrit en python
 +++++++.>.+++.------.--------.>+.>.
 ```
 ## Support des caractères suivants
- - +
- - -
+ - \+
+ - \-
  - <
- - >
+ - \>
  - [
  - ]
  - .
+ - ,
 # Utilisation
 ## Lire l'expression depuis un fichier
 python brainfuck.py --file [nom_du_fichier]
