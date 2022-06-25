@@ -8,8 +8,8 @@ def file_to_str(file):
         for j in i:
             if j in "[]<>+-.,":
                 temp += j
-            else:
-                pass
+            elif j == "#":
+                break
     return temp
 
 parser = argparse.ArgumentParser(description='interprêteur brainfuck')
@@ -70,4 +70,5 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
                 (chaine, ptr, vals) = interpreter(w) # Utilisation récursive de la fonction afin de faire fonctionner la boucle
     return (chaine, ptr, vals)
 
+print(script)
 print(interpreter(script)[0])
