@@ -1,14 +1,18 @@
 # brainfuck-py
 Interpréteur du langage brainfuck écrit en python
 # Fonctionnalités
-## Possibilité d'ajouter des commentaires en fin de ligne
+## Mise en page
+Support des commentaires et des sauts de lignes,
+les commentaires sont à utiliser en fin de ligne
+après un espace, comme ceci :
 ```
 ++++++++++ Ceci est un commentaire
 [>+++++++>++++++++++>+++>+<<<<-] Fin de la boucle
 >++.>+.+++++++..+++.>++.<<++++++++
 +++++++.>.+++.------.--------.>+.>.
 ```
-## Support des caractères suivants
+## Caractères supportés
+Support des caractères suivants :
  - \+
  - \-
  - <
