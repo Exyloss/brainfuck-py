@@ -26,8 +26,8 @@ Support des caractères suivants :
  - ,
 ## Traduction des instructions
 Ce programme peut aussi traduire vos instructions en C,
-cependant le traducteur n'indente pas le texte et ne le
-compile pas. Le code peut être compilé à par, à l'aide de
+cependant le traducteur n'indente pas le texte.
+Le code peut être compilé à par, à l'aide de
 gcc avec la commande suivante :
 ```
 $ gcc [fichier_c] -o [fichier_compilé]
@@ -35,7 +35,7 @@ $ gcc [fichier_c] -o [fichier_compilé]
 # Utilisation
 ## Lire l'expression depuis un fichier
 ```
-$ python brainfuck.py --file [nom_du_fichier]
+$ python brainfuck.py [nom_du_fichier]
 ```
 ## Écrire et lire l'expression dans l'interpréteur
 ```
@@ -43,8 +43,8 @@ $ python brainfuck.py
 ```
 ## Traduire les instructions en C
 ```
-$ python brainfuck.py --file [nom_du_fichier] --compile [fichier_sortie]
+$ python brainfuck.py [nom_du_fichier] --translate [fichier_sortie]
 ```
 # À faire
- - [ ] Support des boucles imbriquées
+ - [X] Support des boucles imbriquées
  - [X] Traduction brainfuck en C pour compiler
