@@ -4,13 +4,13 @@ Interpréteur du langage brainfuck écrit en python
 ## Mise en page
 Support des commentaires, des sauts de lignes
 et des indentations,
-les commentaires sont à utiliser en fin de ligne
-après un hashtag, comme ceci :
-```
-++++++++++ #Ceci est un commentaire
+les commentaires peuvent être placés à la fin
+d'une ligne, comme ici :
+```brainfuck
+++++++++++ Ceci est un commentaire
 [
     >+++++++>++++++++++>+++>+<<<<-
-] #Fin de la boucle
+] Fin de la boucle
 >++.>+.+++++++..+++.>++.<<++++++++
 +++++++.>.+++.------.--------.>+.>.
 ```

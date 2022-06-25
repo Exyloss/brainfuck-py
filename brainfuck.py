@@ -8,7 +8,9 @@ def file_to_str(file):
         for j in i:
             if j in "[]<>+-.,":
                 temp += j
-            elif j == "#":
+            elif j == "\t" or j == " ":
+                continue
+            else:
                 break
     return temp
 
@@ -70,5 +72,4 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
                 (chaine, ptr, vals) = interpreter(w) # Utilisation récursive de la fonction afin de faire fonctionner la boucle
     return (chaine, ptr, vals)
 
-print(script)
 print(interpreter(script)[0])
