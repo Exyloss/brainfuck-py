@@ -27,7 +27,7 @@ Support des caractères suivants :
 ## Traduction des instructions
 Ce programme peut aussi traduire vos instructions en C,
 cependant le traducteur n'indente pas le texte et ne le
-compile pas. Le code peut être compilé à par à l'aide de
+compile pas. Le code peut être compilé à par, à l'aide de
 gcc avec la commande suivante :
 ```
 $ gcc [fichier_c] -o [fichier_compilé]

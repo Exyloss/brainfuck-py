@@ -89,7 +89,7 @@ def bf2c(script, name):
     f.close()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='interprêteur brainfuck')
+    parser = argparse.ArgumentParser(description='interpréteur brainfuck')
     parser.add_argument('--file', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier contenant les instructions')
     parser.add_argument('--compile', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier de sortie')
     args = parser.parse_args()
