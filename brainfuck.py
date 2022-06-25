@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import sys
 
 def file_to_str(file):
     f = open(file, 'r')
@@ -14,21 +15,11 @@ def file_to_str(file):
                 break
     return temp
 
-parser = argparse.ArgumentParser(description='interprêteur brainfuck')
-parser.add_argument('--file', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier contenant les instructions')
-args = parser.parse_args()
-
-if args.file != None:
-    script = file_to_str(args.file)
-else:
-    script = input("Instructions : ")
-
-def interpreter(script,ptr=0,vals=[0],chaine=""):
+def interpreter(script,ptr=0,vals=[0]):
     """
     Fonction prennant en paramètre un script brainfuck
-    et renvoyant un tuple contenant la chaine de caractères
-    obtenue, le tableau des valeurs modifiées et la dernière
-    position du pointeur.
+    et renvoyant un tuple contenant le tableau des valeurs
+    modifiées et la dernière position du pointeur.
     """
     for i in range(len(script)):
         if "]" in script[i:] and ("[" not in script[i:] or script[i:].index("]") < script[i:].index("]")):
@@ -51,7 +42,7 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
             else:
                 vals[ptr] -= 1 # On incrémente la valeur située à l'adresse du pointeur
         elif script[i] == ".":
-            chaine += chr(vals[ptr]) # On ajoute à la chaîne de caractères finale la valeur située à l'adresse du pointeur
+            sys.stdout.write(chr(vals[ptr]))
         elif script[i] == ",":
             while True:
                 try:
@@ -69,7 +60,17 @@ def interpreter(script,ptr=0,vals=[0],chaine=""):
                 quit()
             w = w[:end_w] # Tableau contenant les valeurs à l'interieur de la boucle
             while vals[ptr] != 0:
-                (chaine, ptr, vals) = interpreter(w) # Utilisation récursive de la fonction afin de faire fonctionner la boucle
-    return (chaine, ptr, vals)
+                (ptr, vals) = interpreter(w) # Utilisation récursive de la fonction afin de faire fonctionner la boucle
+    return (ptr, vals)
 
-print(interpreter(script)[0])
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='interprêteur brainfuck')
+    parser.add_argument('--file', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier contenant les instructions')
+    args = parser.parse_args()
+
+    if args.file != None:
+        script = file_to_str(args.file)
+    else:
+        script = input("Instructions : ")
+
+    interpreter(script)

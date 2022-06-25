@@ -29,3 +29,6 @@ Support des caractères suivants :
 python brainfuck.py --file [nom_du_fichier]
 ## Écrire et lire l'expression dans l'interpréteur
 python brainfuck.py
+# À faire
+ - [] Support des boucles imbriquées
+ - [] Traduction brainfuck en C pour compiler
