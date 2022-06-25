@@ -63,14 +63,43 @@ def interpreter(script,ptr=0,vals=[0]):
                 (ptr, vals) = interpreter(w) # Utilisation récursive de la fonction afin de faire fonctionner la boucle
     return (ptr, vals)
 
+def bf2c(script, name):
+    f = open(name, "w")
+    f.write("#include <stdio.h>\n")
+    f.write("int main() {\n")
+    f.write("unsigned char* ptr;\n")
+    for i in script:
+        if i == "+":
+            f.write("++(*ptr);\n")
+        elif i == "-":
+            f.write("--(*ptr);\n")
+        elif i == ">":
+            f.write("ptr++;\n")
+        elif i == "<":
+            f.write("ptr--;\n")
+        elif i == ".":
+            f.write("putchar(*ptr);\n")
+        elif i == ",":
+            f.write("(*ptr) = getchar();\n")
+        elif i == "[":
+            f.write("while (*ptr) {\n")
+        elif i == "]":
+            f.write("}\n")
+    f.write("}\n")
+    f.close()
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='interprêteur brainfuck')
     parser.add_argument('--file', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier contenant les instructions')
+    parser.add_argument('--compile', nargs='?', metavar='FICHIER', type=str, help='renseigner un fichier de sortie')
     args = parser.parse_args()
 
     if args.file != None:
         script = file_to_str(args.file)
     else:
         script = input("Instructions : ")
+
+    if args.compile != None:
+        bf2c(script, args.compile)
 
     interpreter(script)
