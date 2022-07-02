@@ -105,11 +105,11 @@ if __name__ == "__main__":
     else:
         script = input("Instructions : ")
 
-    if args.compile != None:
-        bf2c(script, args.compile)
-        r = input("Compiler le fichier C ? (o/n) ")
+    if args.translate != None:
+        bf2c(script, args.translate)
+        r = input("Compiler le fichier C généré ? (o/n) ")
         if r == "o":
-            os.system("gcc "+args.compile)
+            os.system("gcc "+args.translate)
             print("Fichier compilé avec comme nom «a.out».")
         quit()
 
